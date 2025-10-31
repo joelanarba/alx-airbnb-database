@@ -24,9 +24,9 @@ ORDER BY b.created_at DESC;
 -- ======================================================
 -- Step 2: Optimized Query
 -- Improvements:
---   1. Use SELECT with explicit fields instead of SELECT *
---   2. Added appropriate indexes (user_id, property_id, booking_id)
---   3. Reordered joins to filter smaller datasets earlier if possible
+--   1. Use explicit columns instead of SELECT *
+--   2. Apply filters using WHERE with multiple conditions (AND)
+--   3. Add indexes to improve join and filter performance
 -- ======================================================
 EXPLAIN ANALYZE
 SELECT
@@ -44,4 +44,5 @@ JOIN "User" u ON b.user_id = u.user_id
 JOIN Property p ON b.property_id = p.property_id
 LEFT JOIN Payment pay ON b.booking_id = pay.booking_id
 WHERE b.status = 'confirmed'
+  AND pay.amount > 100.00
 ORDER BY b.start_date DESC;
