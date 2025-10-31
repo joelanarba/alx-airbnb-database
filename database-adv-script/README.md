@@ -1,7 +1,7 @@
 # Advanced SQL — Airbnb Database
 
 This directory contains SQL scripts demonstrating advanced querying techniques for the Airbnb database.  
-It includes joins, subqueries, and more — each illustrating how data can be efficiently retrieved and analyzed across related tables.
+It includes joins, subqueries, aggregations, and window functions — each illustrating how data can be efficiently retrieved and analyzed across related tables.
 
 ---
 
@@ -110,12 +110,30 @@ The inner query references the outer query's current user (u.id) to count bookin
 
 ---
 
+## Task 2: Aggregations and Window Functions
+
+**File:** `aggregations_and_window_functions.sql`
+
+### Objective
+This script demonstrates the use of SQL aggregation and window functions on the Airbnb database.
+
+### Queries
+
+1. **Total Bookings by Each User**  
+   Uses `COUNT()` and `GROUP BY` to calculate how many bookings each user has made.
+
+2. **Rank Properties by Total Bookings**  
+   Uses the `RANK()` window function to assign ranks to properties based on their total number of bookings.
+
+---
+
 ## How to Run
 
 Make sure your database schema and sample data are already set up, then run:
 ```bash
 mysql -u root -p airbnb_db < joins_queries.sql
 mysql -u root -p airbnb_db < subqueries.sql
+mysql -u root -p airbnb_db < aggregations_and_window_functions.sql
 ```
 
 ---
@@ -126,5 +144,6 @@ alx-airbnb-database/
 └── database-adv-script/
     ├── joins_queries.sql
     ├── subqueries.sql
+    ├── aggregations_and_window_functions.sql
     └── README.md
 ```
